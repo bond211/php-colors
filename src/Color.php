@@ -31,8 +31,8 @@ class Color
         $this->g = $g;
         $this->b = $b;
 
-        $this->hex = sprintf("#%02x%02x%02x", $r, $g, $b);
-        $this->hex6 = sprintf("%02x%02x%02x", $r, $g, $b);
+        $this->hex6 = RgbToHex::toString($r, $g, $b);
+        $this->hex = '#' . $this->hex6;
 
         $this->rgb = new Rgb([$r, $g, $b]);
         $this->hsl = new Hsl(self::rgb2hsl($r, $g, $b));

@@ -27,6 +27,13 @@ final class HslConstructorsTest extends TestCase
         $this->runAssertions($color);
     }
 
+    public function testFromAllValues2(): void
+    {
+        $color = Color::fromHsl(252, 80, 73);
+
+        $this->assertEquals(252, $color->hsl->h);
+    }
+
     public function testFromIndexedArray(): void
     {
         $color = Color::fromHsl([208, 79, 28]);

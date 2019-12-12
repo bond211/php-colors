@@ -12,9 +12,9 @@ class RgbToCmyk
         $k = min($c, $m, $y);
 
         if ($k < 255) {
-            $c = 255 * ($c - $k) / (255 - $k);
-            $m = 255 * ($m - $k) / (255 - $k);
-            $y = 255 * ($y - $k) / (255 - $k);
+            $c = self::mapValue($c, $k);
+            $m = self::mapValue($m, $k);
+            $y = self::mapValue($y, $k);
         }
 
         $c = round($c / 2.55);
@@ -23,5 +23,10 @@ class RgbToCmyk
         $k = round($k / 2.55);
 
         return [$c, $m, $y, $k];
+    }
+
+    private static function mapValue(int $val, int $k): float
+    {
+        return 255 * ($val - $k) / (255 - $k);
     }
 }

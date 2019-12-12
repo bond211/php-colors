@@ -2,15 +2,16 @@
 
 namespace Bond211\Colors;
 
+use Bond211\Colors\Converters\CmykToRgb;
 use Bond211\Colors\Converters\HexToRgb;
+use Bond211\Colors\Converters\HslToRgb;
+use Bond211\Colors\Converters\HsvToRgb;
+use Bond211\Colors\Converters\RgbToCmyk;
+use Bond211\Colors\Converters\RgbToHex;
 use Bond211\Colors\Converters\RgbToHsl;
 use Bond211\Colors\Converters\RgbToHsv;
 use Bond211\Colors\Utils\ConstructorUtil;
 use Bond211\Colors\Utils\DistanceUtil;
-use Bond211\Colors\Converters\CmykToRgb;
-use Bond211\Colors\Converters\HslToRgb;
-use Bond211\Colors\Converters\HsvToRgb;
-use Bond211\Colors\Converters\RgbToCmyk;
 
 class Color
 {
@@ -120,12 +121,12 @@ class Color
 
     private static function hsv2rgb(int $h, int $s, int $v): array
     {
-       return  HsvToRgb::toArray($h,$s,$v);
+        return HsvToRgb::toArray($h, $s, $v);
     }
 
-    private static function hsl2rgb(int $h,int $s,int $l): array
+    private static function hsl2rgb(int $h, int $s, int $l): array
     {
-       return HslToRgb::toArray($h,$s,$l);
+        return HslToRgb::toArray($h, $s, $l);
     }
 
     public function isBright(int $threshold = 130): bool

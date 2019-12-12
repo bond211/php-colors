@@ -141,10 +141,10 @@ class Color
 
     public function rotate(int $deg): self
     {
-        $hsv = $this->hsv;
-        $h = ($hsv->h + $deg) % 360;
+        $hsl = $this->hsl;
+        $h = ($hsl->h + $deg) % 360;
 
-        return Color::fromHsv($h, $hsv->s, $hsv->v);
+        return Color::fromHsl($h, $hsl->s, $hsl->l);
     }
 
     public function complementary(): self

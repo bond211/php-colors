@@ -93,9 +93,9 @@ class Color
     public static function random(): self
     {
         return self::fromRgb(
-            mt_rand(0, 256),
-            mt_rand(0, 256),
-            mt_rand(0, 256)
+            mt_rand(0, 255),
+            mt_rand(0, 255),
+            mt_rand(0, 255)
         );
     }
 

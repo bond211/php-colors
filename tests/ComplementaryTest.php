@@ -13,6 +13,6 @@ final class ComplementaryTest extends TestCase
         $color1 = Color::fromHex('#0f4c81');
         $color2 = $color1->complementary();
 
-        $this->assertEquals('#824510', $color2->hex);
+        $this->assertEquals('#80440f', $color2->hex);
     }
 }

@@ -7,7 +7,7 @@ use Bond211\Colors\Color;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
-final class ColorCreationFromHexTest extends TestCase
+final class HexConstructorsTest extends TestCase
 {
     public function testColorCreationFromHex(): void
     {

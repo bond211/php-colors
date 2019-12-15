@@ -87,7 +87,7 @@ You can use a `Color` object as string:
 
 ## Useful Information
 
-E.g. to decide which font color to use with given background color you can detect whether the color is dark of light:
+E.g. to decide which font color to use with given background color you can detect whether the color is bright or dark:
 
     $color->isBright();
     $color->isDark();

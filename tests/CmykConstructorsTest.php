@@ -10,18 +10,29 @@ final class CmykConstructorsTest extends TestCase
 {
     private function runAssertions(Color $color): void
     {
-        // [!] blue channel slightly shifted
+        $refColor = Color::fromHex('0f4c81');
 
-        $this->assertEquals('#0f4c82', $color->hex);
-
-        $this->assertEquals(15, $color->r);
-        $this->assertEquals(76, $color->g);
-        $this->assertEquals(130, $color->b);
+        $distanceRgb = $refColor->distanceRgb($color);
+        $this->assertTrue($distanceRgb <= 1, "Max. allowed RGB distance of 1 exceeded: $distanceRgb");
     }
 
     public function testFromAllValues(): void
     {
         $color = Color::fromCmyk(88, 41, 0, 49);
+
+        $this->runAssertions($color);
+    }
+
+    public function testFromAllValuesFloat1(): void
+    {
+        $color = Color::fromCmyk(88 / 100, 41 / 100, 0 / 100, 49 / 100);
+
+        $this->runAssertions($color);
+    }
+
+    public function testFromAllValuesFloat2(): void
+    {
+        $color = Color::fromCmyk(88 / 100, 41, 0, 49 / 100);
 
         $this->runAssertions($color);
     }

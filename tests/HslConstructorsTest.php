@@ -10,19 +10,29 @@ final class HslConstructorsTest extends TestCase
 {
     private function runAssertions(Color $color): void
     {
-        // [!] green channel slightly shifted
-        // [!] blue channel slightly shifted
+        $refColor = Color::fromHex('0f4c81');
 
-        $this->assertEquals('#0f4b80', $color->hex);
-
-        $this->assertEquals(15, $color->r);
-        $this->assertEquals(75, $color->g);
-        $this->assertEquals(128, $color->b);
+        $distanceRgb = $refColor->distanceRgb($color);
+        $this->assertTrue($distanceRgb <= 2, "Max. allowed RGB distance of 2 exceeded: $distanceRgb");
     }
 
     public function testFromAllValues(): void
     {
         $color = Color::fromHsl(208, 79, 28);
+
+        $this->runAssertions($color);
+    }
+
+    public function testFromAllValuesFloat1(): void
+    {
+        $color = Color::fromHsl(208 / 360, 79 / 100, 28 / 100);
+
+        $this->runAssertions($color);
+    }
+
+    public function testFromAllValuesFloat2(): void
+    {
+        $color = Color::fromHsl(208, 79 / 100, 28 / 100);
 
         $this->runAssertions($color);
     }

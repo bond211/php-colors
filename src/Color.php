@@ -47,42 +47,83 @@ class Color
         return new self($r, $g, $b);
     }
 
-    public static function fromRgb($redOrAll, int $green = null, int $blue = null): self
+    /**
+     * @param int|float|array $redOrAll
+     * @param int|float|null $green
+     * @param int|float|null $blue
+     * @return Color
+     */
+    public static function fromRgb($redOrAll, $green = null, $blue = null): self
     {
         $arr = is_array($redOrAll)
             ? ConstructorUtil::toConstructorArray($redOrAll, ['r', 'g', 'b'])
             : ['r' => $redOrAll, 'g' => $green, 'b' => $blue];
 
+        $arr = self::scaleFloatToInt($arr, [
+            'r' => 255,
+            'g' => 255,
+            'b' => 255,
+        ]);
+
         return new self($arr['r'], $arr['g'], $arr['b']);
     }
 
-    public static function fromHsv($hueOrAll, int $saturation = null, int $value = null): self
+    /**
+     * @param int|float|array $hueOrAll
+     * @param int|float|null $saturation
+     * @param int|float|null $value
+     * @return Color
+     */
+    public static function fromHsv($hueOrAll, $saturation = null, $value = null): self
     {
         $arr = is_array($hueOrAll)
             ? ConstructorUtil::toConstructorArray($hueOrAll, ['h', 's', 'v'])
             : ['h' => $hueOrAll, 's' => $saturation, 'v' => $value];
+
+        $arr = self::scaleFloatToInt($arr, [
+            'h' => 360,
+        ]);
 
         [$r, $g, $b] = self::hsv2rgb($arr['h'], $arr['s'], $arr['v']);
 
         return new self($r, $g, $b);
     }
 
-    public static function fromHsl($hueOrAll, int $saturation = null, int $lightness = null): self
+    /**
+     * @param int|float|array $hueOrAll
+     * @param int|float|null $saturation
+     * @param int|float|null $lightness
+     * @return Color
+     */
+    public static function fromHsl($hueOrAll, $saturation = null, $lightness = null): self
     {
         $arr = is_array($hueOrAll)
             ? ConstructorUtil::toConstructorArray($hueOrAll, ['h', 's', 'l'])
             : ['h' => $hueOrAll, 's' => $saturation, 'l' => $lightness];
+
+        $arr = self::scaleFloatToInt($arr, [
+            'h' => 360,
+        ]);
 
         [$r, $g, $b] = self::hsl2rgb($arr['h'], $arr['s'], $arr['l']);
 
         return new self($r, $g, $b);
     }
 
-    public static function fromCmyk($cyanOrAll, int $magenta = null, int $yellow = null, int $key = null): self
+    /**
+     * @param int|float|array $cyanOrAll
+     * @param int|float|null $magenta
+     * @param int|float|null $yellow
+     * @param int|float|null $key
+     * @return Color
+     */
+    public static function fromCmyk($cyanOrAll, $magenta = null, $yellow = null, $key = null): self
     {
         $arr = is_array($cyanOrAll)
             ? ConstructorUtil::toConstructorArray($cyanOrAll, ['c', 'm', 'y', 'k'])
             : ['c' => $cyanOrAll, 'm' => $magenta, 'y' => $yellow, 'k' => $key];
+
+        $arr = self::scaleFloatToInt($arr);
 
         [$r, $g, $b] = self::cmyk2rgb($arr['c'], $arr['m'], $arr['y'], $arr['k']);
 
@@ -160,5 +201,22 @@ class Color
     public function __toString()
     {
         return $this->hex;
+    }
+
+    private static function scaleFloatToInt(array $values, array $maxima = []): array
+    {
+        $res = [];
+
+        foreach ($values as $key => $val) {
+            // scale up to max value if given value is in diapason [0..1)
+            if ($val < 1 || $val === 1.0) {
+                $maxValue = $maxima[$key] ?? 100;
+                $val *= $maxValue;
+            }
+
+            $res[$key] = $val;
+        }
+
+        return $res;
     }
 }

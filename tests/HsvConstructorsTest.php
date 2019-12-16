@@ -10,18 +10,29 @@ final class HsvConstructorsTest extends TestCase
 {
     private function runAssertions(Color $color): void
     {
-        // [!] ALL channels slightly shifted
+        $refColor = Color::fromHex('0f4c81');
 
-        $this->assertEquals('#104d82', $color->hex);
-
-        $this->assertEquals(16, $color->r);
-        $this->assertEquals(77, $color->g);
-        $this->assertEquals(130, $color->b);
+        $distanceRgb = $refColor->distanceRgb($color);
+        $this->assertTrue($distanceRgb <= 3, "Max. allowed RGB distance of 3 exceeded: $distanceRgb");
     }
 
     public function testFromAllValues(): void
     {
         $color = Color::fromHsv(208, 88, 51);
+
+        $this->runAssertions($color);
+    }
+
+    public function testFromAllValuesFloat1(): void
+    {
+        $color = Color::fromHsv(208 / 360, 88 / 100, 51 / 100);
+
+        $this->runAssertions($color);
+    }
+
+    public function testFromAllValuesFloat2(): void
+    {
+        $color = Color::fromHsv(208, 88 / 100, 51);
 
         $this->runAssertions($color);
     }

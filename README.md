@@ -14,7 +14,7 @@ Lowercase, uppercase, with/without hash:
 
 **RGB**
 
-Integers, indexed array, associative array:
+Integers, floats, indexed or associative array of integers/floats:
 
     Color::fromRgb(15, 76, 129);
     Color::fromRgb([15, 76, 129]); 
@@ -24,36 +24,64 @@ Integers, indexed array, associative array:
         'b' => 129,
     ]);
 
+    Color::fromRgb(0.06, 0.3, 0.51);
+    Color::fromRgb([0.06, 0.3, 0.51]);
+    Color::fromRgb([
+        'r' => 0.06,
+        'g' => 0.3,
+        'b' => 0.51,
+    ]);
+
 
 **HSL**
 
-Integers, indexed array, associative array:
+Integers, floats, indexed or associative array of integers/floats:
 
-    Color::fromRgb(208, 79, 28);
-    Color::fromRgb([208, 79, 28]); 
-    Color::fromRgb([
+    Color::fromHsl(208, 79, 28);
+    Color::fromHsl([208, 79, 28]); 
+    Color::fromHsl([
         'h' => 208,
         's' => 79,
         'l' => 28,
     ]);
 
+    Color::fromHsl(0.58, 0.79, 0.28);
+    Color::fromHsl([0.58, 0.79, 0.28]); 
+    Color::fromHsl([
+        'h' => 208,
+        's' => 79,
+        'l' => 28,
+    ]);
+
+    Color::fromHsl([208, 0.79, 0.28]); 
+
 
 **HSV**
 
-Integers, indexed array, associative array:
+Integers, floats, indexed or associative array of integers/floats:
 
-    Color::fromRgb(208, 88, 51);
-    Color::fromRgb([208, 88, 51]); 
-    Color::fromRgb([
+    Color::fromHsv(208, 88, 51);
+    Color::fromHsv([208, 88, 51]); 
+    Color::fromHsv([
         'h' => 208,
         's' => 88,
         'v' => 51,
     ]);
 
+    Color::fromHsv(0.58, 0.88, 0.51);
+    Color::fromHsv([0.58, 0.88, 0.51]); 
+    Color::fromHsv([
+        'h' => 0.58,
+        's' => 0.88,
+        'v' => 0.51,
+    ]);
+
+    Color::fromHsv(208, 0.88, 0.51);
+
 
 **CMYK**
 
-Integers, indexed array, associative array:
+Integers, floats, indexed or associative array of integers/floats:
 
     Color::fromCmyk(88, 41, 0, 49);
     Color::fromCmyk([88, 41, 0, 49]); 
@@ -62,6 +90,15 @@ Integers, indexed array, associative array:
         'm' => 41,
         'y' => 0,
         'k' => 49,
+    ]);
+
+    Color::fromCmyk(0.88, 0.41, 0, 0.49);
+    Color::fromCmyk([0.88, 0.41, 0, 0.49]); 
+    Color::fromCmyk([
+        'c' => 0.88,
+        'm' => 0.41,
+        'y' => 0,
+        'k' => 0.49,
     ]);
 
 

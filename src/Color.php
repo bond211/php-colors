@@ -180,6 +180,11 @@ class Color
         return !$this->isBright($threshold);
     }
 
+    public function copy(): self
+    {
+        return new self($this->r, $this->g, $this->b);
+    }
+
     public function rotate(int $deg): self
     {
         $hsl = $this->hsl;

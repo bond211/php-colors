@@ -1,17 +1,17 @@
 <?php
 
-namespace Bond211\Colors;
+namespace BondarDe\Colors;
 
-use Bond211\Colors\Converters\CmykToRgb;
-use Bond211\Colors\Converters\HexToRgb;
-use Bond211\Colors\Converters\HslToRgb;
-use Bond211\Colors\Converters\HsvToRgb;
-use Bond211\Colors\Converters\RgbToCmyk;
-use Bond211\Colors\Converters\RgbToHex;
-use Bond211\Colors\Converters\RgbToHsl;
-use Bond211\Colors\Converters\RgbToHsv;
-use Bond211\Colors\Utils\ConstructorUtil;
-use Bond211\Colors\Utils\DistanceUtil;
+use BondarDe\Colors\Converters\CmykToRgb;
+use BondarDe\Colors\Converters\HexToRgb;
+use BondarDe\Colors\Converters\HslToRgb;
+use BondarDe\Colors\Converters\HsvToRgb;
+use BondarDe\Colors\Converters\RgbToCmyk;
+use BondarDe\Colors\Converters\RgbToHex;
+use BondarDe\Colors\Converters\RgbToHsl;
+use BondarDe\Colors\Converters\RgbToHsv;
+use BondarDe\Colors\Utils\ConstructorUtil;
+use BondarDe\Colors\Utils\DistanceUtil;
 
 class Color
 {

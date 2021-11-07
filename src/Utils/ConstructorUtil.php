@@ -1,6 +1,6 @@
 <?php
 
-namespace Bond211\Colors\Utils;
+namespace BondarDe\Colors\Utils;
 
 class ConstructorUtil
 {

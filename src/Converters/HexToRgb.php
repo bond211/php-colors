@@ -1,6 +1,6 @@
 <?php
 
-namespace Bond211\Colors\Converters;
+namespace BondarDe\Colors\Converters;
 
 use InvalidArgumentException;
 

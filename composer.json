@@ -1,5 +1,5 @@
 {
-  "name": "bond211/php-colors",
+  "name": "bondarde/php-colors",
   "description": "PHP colors handler",
   "type": "library",
   "license": "MIT",
@@ -14,7 +14,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Bond211\\Colors\\": "src/"
+      "BondarDe\\Colors\\": "src/"
     }
   },
   "autoload-dev": {

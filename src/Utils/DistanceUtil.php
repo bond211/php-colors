@@ -1,8 +1,8 @@
 <?php
 
-namespace Bond211\Colors\Utils;
+namespace BondarDe\Colors\Utils;
 
-use Bond211\Colors\Color;
+use BondarDe\Colors\Color;
 
 class DistanceUtil
 {

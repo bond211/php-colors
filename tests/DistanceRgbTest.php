@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use Bond211\Colors\Color;
+use BondarDe\Colors\Color;
 use PHPUnit\Framework\TestCase;
 
 final class DistanceRgbTest extends TestCase

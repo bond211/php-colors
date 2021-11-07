@@ -1,6 +1,6 @@
 <?php
 
-namespace Bond211\Colors;
+namespace BondarDe\Colors;
 
 class Cmyk
 {

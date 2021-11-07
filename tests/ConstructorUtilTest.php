@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use Bond211\Colors\Utils\ConstructorUtil;
+use BondarDe\Colors\Utils\ConstructorUtil;
 use PHPUnit\Framework\TestCase;
 
 final class ConstructorUtilTest extends TestCase

@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use Bond211\Colors\Color;
-use Bond211\Colors\Utils\DistanceUtil;
+use BondarDe\Colors\Color;
+use BondarDe\Colors\Utils\DistanceUtil;
 use PHPUnit\Framework\TestCase;
 
 final class DistanceUtilTest extends TestCase

@@ -2,7 +2,7 @@
 
 namespace BondarDe\Colors\Converters;
 
-use InvalidArgumentException;
+use BondarDe\Colors\Exceptions\ColorNotParsableException;
 
 class HexToRgb
 {
@@ -28,7 +28,7 @@ class HexToRgb
             return;
         }
 
-        throw new InvalidArgumentException('Not parsable color');
+        throw new ColorNotParsableException('Not parsable color: "' . $hex . '"');
     }
 
     private static function toDoubleHex($s): string

@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Tests;
 
 use BondarDe\Colors\Color;
-use InvalidArgumentException;
+use BondarDe\Colors\Exceptions\ColorNotParsableException;
 use PHPUnit\Framework\TestCase;
 
 final class HexConstructorsTest extends TestCase
@@ -20,6 +20,7 @@ final class HexConstructorsTest extends TestCase
         $this->assertEquals(76, $color->g);
         $this->assertEquals(129, $color->b);
     }
+
     public function testColorCreationFromHexWithHash(): void
     {
         $color = Color::fromHex('#0f4c81');
@@ -43,7 +44,7 @@ final class HexConstructorsTest extends TestCase
 
     public function testColorCreationFromHexFails(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(ColorNotParsableException::class);
 
         Color::fromHex('xyz123');
     }

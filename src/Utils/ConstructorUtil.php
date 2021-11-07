@@ -4,7 +4,7 @@ namespace BondarDe\Colors\Utils;
 
 class ConstructorUtil
 {
-    public static function toConstructorArray(array $data, array $keys)
+    public static function toConstructorArray(array $data, array $keys): array
     {
         if (self::isProperlyFormatted($data, $keys)) {
             return $data;
@@ -18,7 +18,7 @@ class ConstructorUtil
         return $res;
     }
 
-    private static function isProperlyFormatted(array $data, array $keys)
+    private static function isProperlyFormatted(array $data, array $keys): bool
     {
         $dataKeys = array_keys($data);
         $sortedKeys = $keys;

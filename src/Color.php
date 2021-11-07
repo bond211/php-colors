@@ -12,6 +12,7 @@ use BondarDe\Colors\Converters\RgbToHsl;
 use BondarDe\Colors\Converters\RgbToHsv;
 use BondarDe\Colors\Utils\ConstructorUtil;
 use BondarDe\Colors\Utils\DistanceUtil;
+use BondarDe\Colors\Utils\ParseUtil;
 
 class Color
 {
@@ -39,6 +40,11 @@ class Color
         $this->hsl = new Hsl(self::rgb2hsl($r, $g, $b));
         $this->hsv = new Hsv(self::rgb2hsv($r, $g, $b));
         $this->cmyk = new Cmyk(self::rgb2cmyk($r, $g, $b));
+    }
+
+    public static function parse(string $s): self
+    {
+        return ParseUtil::parse($s);
     }
 
     public static function fromHex(string $s): self

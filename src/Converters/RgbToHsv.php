@@ -26,21 +26,14 @@ class RgbToHsv
         return [$h, $s, $v];
     }
 
-    private static function toHue(int $r, int $g, int $b, int $min, int $d)
+    private static function toHue(int $r, int $g, int $b, int $min, int $d): float|int
     {
-        switch ($min) {
-            case $r:
-                $h = 3 - (($g - $b) / $d);
-                break;
-            case $b:
-                $h = 1 - (($r - $g) / $d);
-                break;
-            default:
-                $h = 5 - (($b - $r) / $d);
-        }
+        $h = match ($min) {
+            $r => 3 - (($g - $b) / $d),
+            $b => 1 - (($r - $g) / $d),
+            default => 5 - (($b - $r) / $d),
+        };
 
-        $h = 60 * $h;
-
-        return $h;
+        return 60 * $h;
     }
 }

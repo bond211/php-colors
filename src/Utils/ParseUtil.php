@@ -35,7 +35,7 @@ class ParseUtil
     {
         try {
             return Color::fromHex($s);
-        } catch (ColorNotParsableException $e) {
+        } catch (ColorNotParsableException) {
             return null;
         }
     }

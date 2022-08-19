@@ -7,9 +7,8 @@ class HsvToRgb
     public static function toArray(int $h, int $s, int $v): array
     {
         $rgb = self::toBaseRgb($h);
-        $rgb = self::toActualRgb($s, $v, $rgb);
 
-        return $rgb;
+        return self::toActualRgb($s, $v, $rgb);
     }
 
     private static function toBaseRgb(int $h): array

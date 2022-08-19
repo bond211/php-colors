@@ -22,7 +22,7 @@ class HexToRgb
         return strtolower(ltrim($s, '#'));
     }
 
-    private static function assertFormat(string $hex)
+    private static function assertFormat(string $hex): void
     {
         if (preg_match('/^([0-9a-f]{3}){1,2}$/', $hex)) {
             return;
@@ -41,10 +41,9 @@ class HexToRgb
         $splitSize = strlen($hex) > 4 ? 2 : 1;
 
         $hexRgbElements = str_split($hex, $splitSize);
-        $hexRgbElements = array_map(function (string $s): string {
+
+        return array_map(function (string $s): string {
             return self::toDoubleHex($s);
         }, $hexRgbElements);
-
-        return $hexRgbElements;
     }
 }

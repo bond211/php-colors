@@ -30,7 +30,7 @@ class RgbToHsl
     {
         switch ($max) {
             case $r:
-                $h = 60 * ((($g - $b) / $d) % 6);
+                $h = 60 * (intval(($g - $b) / $d) % 6);
                 if ($b > $g) {
                     $h += 360;
                 }

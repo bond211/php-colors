@@ -4,7 +4,11 @@ namespace BondarDe\Colors\Converters;
 
 class HslToRgb
 {
-    public static function toArray(int $h, int $s, int $l): array
+    public static function toArray(
+        int|float $h,
+        int|float $s,
+        int|float $l,
+    ): array
     {
         $h /= 360;
         $s /= 100;

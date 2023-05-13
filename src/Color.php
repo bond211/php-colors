@@ -16,16 +16,16 @@ use BondarDe\Colors\Utils\ParseUtil;
 
 class Color
 {
-    public $r;
-    public $g;
-    public $b;
+    public int $r;
+    public int $g;
+    public int $b;
 
-    public $rgb;
-    public $hex;
-    public $hex6;
-    public $hsl;
-    public $hsv;
-    public $cmyk;
+    public Rgb $rgb;
+    public string $hex;
+    public string $hex6;
+    public Hsl $hsl;
+    public Hsv $hsv;
+    public Cmyk $cmyk;
 
     public function __construct(int $r, int $g, int $b)
     {
@@ -50,16 +50,15 @@ class Color
     public static function fromHex(string $s): self
     {
         [$r, $g, $b] = HexToRgb::toArray($s);
+
         return new self($r, $g, $b);
     }
 
-    /**
-     * @param int|float|array $redOrAll
-     * @param int|float|null $green
-     * @param int|float|null $blue
-     * @return Color
-     */
-    public static function fromRgb($redOrAll, $green = null, $blue = null): self
+    public static function fromRgb(
+        float|array|int $redOrAll,
+        float|int|null  $green = null,
+        float|int|null  $blue = null,
+    ): self
     {
         $arr = is_array($redOrAll)
             ? ConstructorUtil::toConstructorArray($redOrAll, ['r', 'g', 'b'])
@@ -74,13 +73,11 @@ class Color
         return new self($arr['r'], $arr['g'], $arr['b']);
     }
 
-    /**
-     * @param int|float|array $hueOrAll
-     * @param int|float|null $saturation
-     * @param int|float|null $value
-     * @return Color
-     */
-    public static function fromHsv($hueOrAll, $saturation = null, $value = null): self
+    public static function fromHsv(
+        float|array|int $hueOrAll,
+        float|int|null  $saturation = null,
+        float|int|null  $value = null,
+    ): self
     {
         $arr = is_array($hueOrAll)
             ? ConstructorUtil::toConstructorArray($hueOrAll, ['h', 's', 'v'])
@@ -95,13 +92,11 @@ class Color
         return new self($r, $g, $b);
     }
 
-    /**
-     * @param int|float|array $hueOrAll
-     * @param int|float|null $saturation
-     * @param int|float|null $lightness
-     * @return Color
-     */
-    public static function fromHsl($hueOrAll, $saturation = null, $lightness = null): self
+    public static function fromHsl(
+        float|array|int $hueOrAll,
+        float|int|null  $saturation = null,
+        float|int|null  $lightness = null,
+    ): self
     {
         $arr = is_array($hueOrAll)
             ? ConstructorUtil::toConstructorArray($hueOrAll, ['h', 's', 'l'])
@@ -116,14 +111,12 @@ class Color
         return new self($r, $g, $b);
     }
 
-    /**
-     * @param int|float|array $cyanOrAll
-     * @param int|float|null $magenta
-     * @param int|float|null $yellow
-     * @param int|float|null $key
-     * @return Color
-     */
-    public static function fromCmyk($cyanOrAll, $magenta = null, $yellow = null, $key = null): self
+    public static function fromCmyk(
+        float|array|int $cyanOrAll,
+        float|int|null  $magenta = null,
+        float|int|null  $yellow = null,
+        float|int|null  $key = null,
+    ): self
     {
         $arr = is_array($cyanOrAll)
             ? ConstructorUtil::toConstructorArray($cyanOrAll, ['c', 'm', 'y', 'k'])
@@ -166,12 +159,20 @@ class Color
         return CmykToRgb::toArray($c, $m, $y, $k);
     }
 
-    private static function hsv2rgb(int $h, int $s, int $v): array
+    private static function hsv2rgb(
+        int|float $h,
+        int|float $s,
+        int|float $v,
+    ): array
     {
         return HsvToRgb::toArray($h, $s, $v);
     }
 
-    private static function hsl2rgb(int $h, int $s, int $l): array
+    private static function hsl2rgb(
+        int|float $h,
+        int|float $s,
+        int|float $l,
+    ): array
     {
         return HslToRgb::toArray($h, $s, $l);
     }
@@ -209,7 +210,7 @@ class Color
         return DistanceUtil::distance($this, $another, ['r', 'g', 'b']);
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->hex;
     }

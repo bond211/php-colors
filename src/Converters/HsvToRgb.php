@@ -4,14 +4,18 @@ namespace BondarDe\Colors\Converters;
 
 class HsvToRgb
 {
-    public static function toArray(int $h, int $s, int $v): array
+    public static function toArray(
+        int|float $h,
+        int|float $s,
+        int|float $v,
+    ): array
     {
         $rgb = self::toBaseRgb($h);
 
         return self::toActualRgb($s, $v, $rgb);
     }
 
-    private static function toBaseRgb(int $h): array
+    private static function toBaseRgb(int|float $h): array
     {
         $rgb = [0, 0, 0];
 
@@ -29,7 +33,11 @@ class HsvToRgb
         return $rgb;
     }
 
-    private static function toActualRgb(int $s, int $v, array $rgb): array
+    private static function toActualRgb(
+        int|float $s,
+        int|float $v,
+        array     $rgb,
+    ): array
     {
         $max = max($rgb);
         $factor = 255 * ($v / 100);

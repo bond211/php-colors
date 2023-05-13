@@ -19,7 +19,6 @@ class Color
     public int $r;
     public int $g;
     public int $b;
-    // TODO: alpha?
 
     public Rgb $rgb;
     public string $hex;

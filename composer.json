@@ -1,33 +1,33 @@
 {
-  "name": "bondarde/php-colors",
-  "description": "PHP colors handler",
-  "type": "library",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Alexander Bondar",
-      "email": "alexander@bondar.de"
+    "name": "bondarde/php-colors",
+    "description": "PHP colors handler",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexander Bondar",
+            "email": "alexander@bondar.de"
+        }
+    ],
+    "require": {
+        "php": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "BondarDe\\Colors\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "scripts": {
+        "test": [
+            "./vendor/bin/phpunit"
+        ]
     }
-  ],
-  "require": {
-    "php": "^8.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "BondarDe\\Colors\\": "src/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Tests\\": "tests/"
-    }
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^9.5"
-  },
-  "scripts": {
-    "test": [
-      "./vendor/bin/phpunit"
-    ]
-  }
 }

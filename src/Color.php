@@ -19,6 +19,7 @@ class Color
     public int $r;
     public int $g;
     public int $b;
+    // TODO: alpha?
 
     public Rgb $rgb;
     public string $hex;
@@ -230,5 +231,128 @@ class Color
         }
 
         return $res;
+    }
+
+
+    public function r(float|int $r): self
+    {
+        return self::fromRgb(
+            $r,
+            $this->g,
+            $this->b,
+        );
+    }
+
+    public function g(float|int $g): self
+    {
+        return self::fromRgb(
+            $this->r,
+            $g,
+            $this->b,
+        );
+    }
+
+    public function b(float|int $b): self
+    {
+        return self::fromRgb(
+            $this->r,
+            $this->g,
+            $b,
+        );
+    }
+
+
+    public function h(float|int $h): self
+    {
+        $hsl = $this->hsl;
+
+        return self::fromHsl(
+            $h,
+            $hsl->s,
+            $hsl->l,
+        );
+    }
+
+    public function s(float|int $s): self
+    {
+        $hsl = $this->hsl;
+
+        return self::fromHsl(
+            $hsl->h,
+            $s,
+            $hsl->l,
+        );
+    }
+
+    public function l(float|int $l): self
+    {
+        $hsl = $this->hsl;
+
+        return self::fromHsl(
+            $hsl->h,
+            $hsl->s,
+            $l,
+        );
+    }
+
+
+    public function v(float|int $v): self
+    {
+        $hsv = $this->hsv;
+
+        return self::fromHsv(
+            $hsv->h,
+            $hsv->s,
+            $v,
+        );
+    }
+
+
+    public function c(float|int $c): self
+    {
+        $cmyk = $this->cmyk;
+
+        return self::fromCmyk(
+            $c,
+            $cmyk->m,
+            $cmyk->y,
+            $cmyk->k,
+        );
+    }
+
+    public function m(float|int $m): self
+    {
+        $cmyk = $this->cmyk;
+
+        return self::fromCmyk(
+            $cmyk->c,
+            $m,
+            $cmyk->y,
+            $cmyk->k,
+        );
+    }
+
+    public function y(float|int $y): self
+    {
+        $cmyk = $this->cmyk;
+
+        return self::fromCmyk(
+            $cmyk->c,
+            $cmyk->m,
+            $y,
+            $cmyk->k,
+        );
+    }
+
+    public function k(float|int $k): self
+    {
+        $cmyk = $this->cmyk;
+
+        return self::fromCmyk(
+            $cmyk->c,
+            $cmyk->m,
+            $cmyk->y,
+            $k,
+        );
     }
 }

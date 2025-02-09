@@ -40,6 +40,12 @@ class ParserTest extends TestCase
         $this->assertEquals(1, $color->r);
         $this->assertEquals(2, $color->g);
         $this->assertEquals(3, $color->b);
+
+        $color = Color::parse('rgb(1 2 3)');
+
+        $this->assertEquals(1, $color->r);
+        $this->assertEquals(2, $color->g);
+        $this->assertEquals(3, $color->b);
     }
 
     public function testParserRgbaSuccess()
@@ -63,6 +69,12 @@ class ParserTest extends TestCase
         $this->assertEquals(3, $color->b);
 
         $color = Color::parse('rgba(1, 2, 3, 0.5)');
+
+        $this->assertEquals(1, $color->r);
+        $this->assertEquals(2, $color->g);
+        $this->assertEquals(3, $color->b);
+
+        $color = Color::parse('rgba(1 2 3 0.5)');
 
         $this->assertEquals(1, $color->r);
         $this->assertEquals(2, $color->g);

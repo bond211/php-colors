@@ -9,7 +9,7 @@ class ParseUtil
 {
     private const PATTERN_0_TO_255 = '25[0-5]|2[0-4]\d|1\d{1,2}|\d\d?';
     private const PATTERN_ALPHA_0_TO_1 = '0|1|0?\.\d+';
-    private const PATTERN_SEPARATOR = '\s*,\s*';
+    private const PATTERN_SEPARATOR = '\s*[, ]\s*';
 
     private const R = '(?<r>' . self::PATTERN_0_TO_255 . ')';
     private const G = '(?<g>' . self::PATTERN_0_TO_255 . ')';
